@@ -1,0 +1,1 @@
+Start-UnityEditor -BatchMode -Quit -LogFile $pwd\Logs\Activation.log -Wait -AdditionalArguments "-verbose -nographics -createManualActivationFile"
