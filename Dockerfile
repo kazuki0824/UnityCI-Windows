@@ -17,7 +17,7 @@ RUN Install-Module -Name UnitySetup -AllowPrerelease -skippublishercheck -Scope 
 
 ARG version
 ENV UNITY_EDITOR_VER=$version
-RUN Install-UnitySetupInstance -Installers (Find-UnitySetupInstaller -Version ${version} -Components 'Windows','Windows_IL2CPP','UWP_IL2CPP') -Verbose
+RUN Install-UnitySetupInstance -Installers (Find-UnitySetupInstaller -Version $Env:UNITY_EDITOR_VER -Components 'Windows','Windows_IL2CPP','UWP_IL2CPP') -Verbose
 
 USER ContainerUser
 COPY ./common /common
