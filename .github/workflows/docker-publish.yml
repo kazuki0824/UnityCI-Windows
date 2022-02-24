@@ -28,12 +28,6 @@ jobs:
       matrix:
         editor_ver: ["2021.2.11f1" ]
     runs-on: windows-latest
-    permissions:
-      contents: read
-      packages: write
-      # This is used to complete the identity challenge
-      # with sigstore/fulcio when running outside of PRs.
-      id-token: write
 
     steps:
       - name: Checkout repository
@@ -80,8 +74,7 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          build-args:
-          - version: ${matrix.editor_ver}
+          build-args: version=${matrix.editor_ver}
 
       # Sign the resulting Docker image digest except on PRs.
       # This will only write to the public Rekor transparency log when the Docker
