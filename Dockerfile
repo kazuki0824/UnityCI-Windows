@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/powershell:lts-nanoserver-ltsc2022
+FROM mcr.microsoft.com/powershell:lts-windowsservercore-ltsc2022
 
 USER ContainerAdministrator
 #ADD https://aka.ms/vs/16/release/vc_redist.x64.exe C:/Downloads/vcredist_x64.exe
