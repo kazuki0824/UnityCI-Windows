@@ -9,7 +9,7 @@ SHELL ["pwsh", "-Command"]
 
 # Install UnitySetup
 RUN Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
-RUN Install-Module -Name UnitySetup -AllowPrerelease -Scope AllUsers
+RUN Install-Module -Name UnitySetup -AllowPrerelease -skippublishercheck -Scope AllUsers
 
 #################
 # Install Unity #
