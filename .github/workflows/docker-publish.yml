@@ -19,14 +19,14 @@ env:
   # Use docker.io for Docker Hub if empty
   # REGISTRY: ghcr.io
   # github.repository as <account>/<repo>
-  IMAGE_NAME: kazuki0824/UnityCI-Windows
+  IMAGE_NAME: kazuki0824/unity-ci-windows
 
 
 jobs:
   build:
     strategy:
       matrix:
-        editor_ver: ["2021.2.11f1" ]
+        editor_ver: ["2021.2.12f1", "2019.4.36f1", "2020.3.30f1" ]
     runs-on: windows-latest
 
     steps:
@@ -57,7 +57,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Docker Build
         run: |
-          docker build --build-arg version=${{matrix.editor_ver}} -t ${{ matrix.editor_ver }} .
+          docker build --build-arg version=${{matrix.editor_ver}} -t ${{env.IMAGE_NAME}}:${{ matrix.editor_ver }} .
       - name: Docker Push
         run: |
-          docker push ${{ matrix.editor_ver }}
+          docker push ${{env.IMAGE_NAME}}:${{ matrix.editor_ver }}
